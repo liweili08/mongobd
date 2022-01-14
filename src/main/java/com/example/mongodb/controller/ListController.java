@@ -9,7 +9,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping({"${spring.datasource.url}"})
 public class ListController {
     private final ListService listService;
 
@@ -33,7 +33,7 @@ public class ListController {
         return listService.increaseQuantity(itemKey);
     }
 
-    @PutMapping("lists/{itemKey}")
+    @PutMapping("lists/{itemKey}/decrease")
     public List<ListItem> putDecreaseQuantity(@PathVariable String itemKey){
         return listService.decreaseQuantity(itemKey);
     }
